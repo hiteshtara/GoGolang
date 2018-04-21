@@ -50,12 +50,12 @@ func pow2(x, n, lim float64) float64 {
 
 func main() {
 	ii, jj := 42, 2701
-	p := &ii
-	fmt.Println(*p)
-	*p = 21
+	l := &ii
+	fmt.Println(*l)
+	*l = 21
 	fmt.Println(ii)
-	p = &j
-	*p = *p / 37
+	l = &jj
+	*l = *l / 37
 	fmt.Println(jj)
 
 	fmt.Println("My favorite number is ", rand.Intn(10))
