@@ -10,6 +10,12 @@ import (
 
 var c, python, java bool
 var i, j int = 1, 2
+var (
+	v1 = Vertex{1, 2}  // has type Vertex
+	v2 = Vertex{X: 1}  // Y:0 is implicit
+	v3 = Vertex{}      // X:0 and Y:0
+	p  = &Vertex{1, 2} // has type *Vertex
+)
 
 func add(x int, y int) int {
 	return x + y
@@ -38,6 +44,12 @@ func split(sum int) (x, y int) {
 	y = sum - x
 	return
 }
+
+type Vertex struct {
+	X int
+	Y int
+}
+
 func pow2(x, n, lim float64) float64 {
 	if v := math.Pow(x, n); v < lim {
 		return v
@@ -49,6 +61,30 @@ func pow2(x, n, lim float64) float64 {
 }
 
 func main() {
+	names := [4]string{
+		"John",
+		"Paul",
+		"George",
+		"Ringo",
+	}
+	fmt.Println(names)
+	a1 := names[0:2]
+	b1 := names[1:3]
+	b1[0] = "XXX"
+	fmt.Println(a1, b1)
+	fmt.Println(names)
+	fmt.Println(a1, b1)
+	fmt.Println(v1, p, v2, v3)
+	var myarray [2]string
+
+	primes := [6]int{2, 3, 5, 7, 11, 13}
+	fmt.Println(primes)
+	var s []int = primes[1:4]
+	fmt.Println(s)
+	myarray[0] = "hello"
+	myarray[1] = "world"
+	fmt.Println(myarray[0], myarray[1])
+	fmt.Println(myarray)
 	ii, jj := 42, 2701
 	l := &ii
 	fmt.Println(*l)
@@ -57,7 +93,12 @@ func main() {
 	l = &jj
 	*l = *l / 37
 	fmt.Println(jj)
-
+	fmt.Println(Vertex{1, 2})
+	v := Vertex{1, 2}
+	m := &v
+	m.X = 1e9
+	fmt.Println(v)
+	fmt.Println(v.X)
 	fmt.Println("My favorite number is ", rand.Intn(10))
 	fmt.Printf("Now you have %g problems", math.Sqrt(7))
 	fmt.Println(math.Pi)
